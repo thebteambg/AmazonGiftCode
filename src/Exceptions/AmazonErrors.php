@@ -19,7 +19,7 @@ class AmazonErrors extends RuntimeException
      * @param string $_error_code
      * @return AmazonErrors
      */
-    public static function getError(string $message, string $_error_code): self
+    public static function getError(string $message, string $_error_code)
     {
         return new static($message, $_error_code);
     }

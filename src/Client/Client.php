@@ -25,7 +25,7 @@ class Client implements ClientInterface
      *
      * @return String
      */
-    public function request($url, $headers, $params): string
+    public function request($url, $headers, $params)
     {
         $handle = curl_init($url);
         curl_setopt($handle, CURLOPT_POST, true);
@@ -34,6 +34,8 @@ class Client implements ClientInterface
         curl_setopt($handle, CURLOPT_POSTFIELDS, $params);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($handle);
+        var_dump($result);
+        // exit();
 
         if ($result === false) {
             $err = curl_errno($handle);
@@ -42,15 +44,23 @@ class Client implements ClientInterface
         }
 
         if (curl_getinfo($handle, CURLINFO_HTTP_CODE) !== JsonResponse::HTTP_OK) {
+            // echo 'Enters here';
+            // exit();
             $err = curl_errno($handle);
+            // var_dump($err);
+            // exit();
+            $errorr = (string) $err;
             $message = json_decode($result)->message;
-            throw AmazonErrors::getError($message, $err);
+            var_dump($errorr);
+            var_dump($message);
+            exit();
+            throw AmazonErrors::getError($message, $errorr);
         }
         return $result;
 
     }
 
-    private function handleCurlError($url, $errno, $message): void
+    private function handleCurlError($url, $errno, $message)
     {
         switch ($errno) {
             case CURLE_COULDNT_CONNECT:

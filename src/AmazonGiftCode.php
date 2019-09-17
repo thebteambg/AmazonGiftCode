@@ -2,6 +2,8 @@
 
 namespace kamerk22\AmazonGiftCode;
 
+// namespace App;
+
 use kamerk22\AmazonGiftCode\AWS\AWS;
 use kamerk22\AmazonGiftCode\Config\Config;
 use kamerk22\AmazonGiftCode\Exceptions\AmazonErrors;
@@ -25,26 +27,32 @@ class AmazonGiftCode
         $this->_config = new Config($key, $secret, $partner, $endpoint, $currency);
     }
 
-    /**
-     * @param Float $value
-     * @return Response\CreateResponse
-     *
-     * @throws AmazonErrors
-     */
-    public function buyGiftCard(Float $value): Response\CreateResponse
-    {
-        return (new AWS($this->_config))->getCode($value);
-    }
 
+//    public function ccancelGiftCard(string $creationRequestId, string $gcId)
+//    {
+//        return (new AWS($this->_config))->cancelCode($creationRequestId, $gcId);
+//    }
 
     /**
      * @param string $creationRequestId
      * @param string $gcId
      * @return Response\CancelResponse
      */
-    public function cancelGiftCard(string $creationRequestId, string $gcId): Response\CancelResponse
+    public function cancelGiftCard(string $creationRequestId, string $gcId)
     {
-        return (new AWS($this->_config))->cancelCode($creationRequestId, $gcId);
+        return Response\CancelResponse (new AWS($this->_config))->cancelCode($creationRequestId, $gcId);
+    }
+
+
+    /**
+     * @param Float $value
+     * @return Response\CreateResponse
+     *
+     * @throws AmazonErrors
+     */
+    public function buyGiftCard($value)
+    {
+        return (new AWS($this->_config))->getCode($value);
     }
 
 
@@ -58,9 +66,9 @@ class AmazonGiftCode
      * @param null $currency
      * @return AmazonGiftCode
      */
-    public static function make($key = null, $secret = null, $partner = null, $endpoint = null, $currency = null): AmazonGiftCode
+    public static function make($key = null, $secret = null, $partner = null, $endpoint = null, $currency = null)
     {
-        return new static($key, $secret, $partner, $endpoint, $currency);
+        return new static ($key, $secret, $partner, $endpoint, $currency);
     }
 
 }

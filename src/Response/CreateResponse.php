@@ -76,66 +76,66 @@ class CreateResponse
     /**
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
-        return $this->_id;
+        return (string) $this->_id;
     }
 
     /**
      * @return string
      */
-    public function getCreationRequestId(): string
+    public function getCreationRequestId()
     {
-        return $this->_creation_request_id;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getClaimCode(): string
-    {
-        return $this->_claim_code;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValue(): string
-    {
-        return $this->_value;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCurrency(): string
-    {
-        return $this->_currency;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->_status;
+        return (string) $this->_creation_request_id;
     }
 
 
     /**
      * @return string
      */
-    public function getRawJson(): string
+    public function getClaimCode()
     {
-        return json_encode($this->_raw_json);
+        return (string) $this->_claim_code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValue()
+    {
+        return (string) $this->_value;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return (string) $this->_currency;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return (string) $this->_status;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getRawJson()
+    {
+        return (string) json_encode($this->_raw_json);
     }
 
     /**
      * @param $jsonResponse
      * @return CreateResponse
      */
-    public function parseJsonResponse($jsonResponse): self
+    public function parseJsonResponse($jsonResponse)
     {
         if (!is_array($jsonResponse)) {
             throw new \RuntimeException('Response must be a scalar value');

@@ -51,7 +51,8 @@ class Config implements ConfigInterface
 
     public function __construct($key, $secret, $partner, $endpoint, $currency)
     {
-
+        // echo 'This is the currency var: ' . $currency;
+        // exit();
         $this->setAccessKey($key ?: config('amazongiftcode.key'));
         $this->setSecret($secret ?: config('amazongiftcode.secret'));
         $this->setPartner($partner ?: config('amazongiftcode.partner'));
@@ -62,9 +63,9 @@ class Config implements ConfigInterface
     /**
      * @return String
      */
-    public function getEndpoint(): string
+    public function getEndpoint() 
     {
-        return $this->_endpoint;
+        return (string) $this->_endpoint;
     }
 
 
@@ -72,7 +73,7 @@ class Config implements ConfigInterface
      * @param $endpoint
      * @return ConfigInterface
      */
-    public function setEndpoint($endpoint): ConfigInterface
+    public function setEndpoint($endpoint)
     {
         $this->_endpoint = parse_url($endpoint, PHP_URL_HOST);
 
@@ -82,18 +83,20 @@ class Config implements ConfigInterface
     /**
      * @return String
      */
-    public function getAccessKey(): string
+    public function getAccessKey()
     {
-        return $this->_accessKey;
+        return (string) $this->_accessKey;
     }
 
     /**
      * @param String $key
      * @return ConfigInterface
      */
-    public function setAccessKey($key): ConfigInterface
+    public function setAccessKey($key)
     {
         $this->_accessKey = $key;
+
+
 
         return $this;
     }
@@ -101,16 +104,16 @@ class Config implements ConfigInterface
     /**
      * @return String
      */
-    public function getSecret(): string
+    public function getSecret() 
     {
-        return $this->_secretKey;
+        return (string) $this->_secretKey;
     }
 
     /**
      * @param String $secret
      * @return ConfigInterface
      */
-    public function setSecret($secret): ConfigInterface
+    public function setSecret($secret)
     {
         $this->_secretKey = $secret;
 
@@ -120,16 +123,16 @@ class Config implements ConfigInterface
     /**
      * @return String
      */
-    public function getCurrency(): string
+    public function getCurrency()
     {
-        return $this->_currency;
+        return (string) $this->_currency;
     }
 
     /**
      * @param String $currency
      * @return ConfigInterface
      */
-    public function setCurrency($currency): ConfigInterface
+    public function setCurrency($currency) 
     {
         $this->_currency = $currency;
 
@@ -139,16 +142,16 @@ class Config implements ConfigInterface
     /**
      * @return String
      */
-    public function getPartner(): string
+    public function getPartner() 
     {
-        return $this->_partnerId;
+        return (string) $this->_partnerId;
     }
 
     /**
      * @param String $partner
      * @return ConfigInterface
      */
-    public function setPartner($partner): ConfigInterface
+    public function setPartner($partner)
     {
         $this->_partnerId = $partner;
 
