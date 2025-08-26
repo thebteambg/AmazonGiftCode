@@ -55,6 +55,8 @@ return [
 
     'currency' => env('GIFT_CARD_CURRENCY', 'USD'),
 
-    'debug' => env('GIFT_CARD_DEBUG', false)
+    'debug' => env('GIFT_CARD_DEBUG', false),
+
+    'program' => null
 
 ];
