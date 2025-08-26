@@ -252,6 +252,8 @@ class AWS
     public function getGiftCardPayload($amount, $creationId = null): string
     {
         $amount = trim($amount);
+        $program = $this->_config->getProgram();
+        
         $payload = [
             'creationRequestId' => $creationId ?: uniqid($this->_config->getPartner().'_'),
             'partnerId' => $this->_config->getPartner(),
@@ -261,6 +263,10 @@ class AWS
                     'amount' => (float)$amount
                 ]
         ];
+        if (!empty($program)) {
+            $payload['programId'] = $program;
+        }
+
         return json_encode($payload);
     }
 
