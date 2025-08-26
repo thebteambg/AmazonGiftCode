@@ -162,4 +162,23 @@ class Config implements ConfigInterface
 
         return $this;
     }
+
+    /**
+     * @return String
+     */
+    public function getProgram(): string
+    {
+        return $this->_program;
+    }
+
+    /**
+     * @param String $partner
+     * @return ConfigInterface
+     */
+    public function setProgram($program): ConfigInterface
+    {
+        $this->_program = $program;
+
+        return $this;
+    }
 }
