@@ -66,4 +66,15 @@ interface ConfigInterface
      * @return $this
      */
     public function setPartner($partner): ConfigInterface;
+
+     /**
+     * @return String
+     */
+    public function getProgram(): string;
+
+    /**
+     * @param $partner
+     * @return $this
+     */
+    public function setProgram($program): ConfigInterface;
 }
