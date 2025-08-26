@@ -48,16 +48,24 @@ class Config implements ConfigInterface
      */
     private $_currency;
 
+    /**
+     * The Amazon Gift Card Program ID for B2B.
+     *
+     * @var string
+     */
+    private $_program;
 
-    public function __construct($key, $secret, $partner, $endpoint, $currency)
+
+    public function __construct($key, $secret, $partner, $endpoint, $currency, $program = null)
     {
-
         $this->setAccessKey($key ?: config('amazongiftcode.key'));
         $this->setSecret($secret ?: config('amazongiftcode.secret'));
         $this->setPartner($partner ?: config('amazongiftcode.partner'));
         $this->setEndpoint($endpoint ?: config('amazongiftcode.endpoint'));
         $this->setCurrency($currency ?: config('amazongiftcode.currency'));
+        $this->setProgram($program ?: config('amazongiftcode.program'));
     }
+
 
     /**
      * @return String
