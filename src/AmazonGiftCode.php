@@ -20,9 +20,10 @@ class AmazonGiftCode
      * @param null $endpoint
      * @param null $currency
      */
-    public function __construct($key = null, $secret = null, $partner = null, $endpoint = null, $currency = null)
+
+    public function __construct($key = null, $secret = null, $partner = null, $endpoint = null, $currency = null, $program = null)
     {
-        $this->_config = new Config($key, $secret, $partner, $endpoint, $currency);
+        $this->_config = new Config($key, $secret, $partner, $endpoint, $currency, $program);
     }
 
     /**
@@ -68,9 +69,9 @@ class AmazonGiftCode
      * @param null $currency
      * @return AmazonGiftCode
      */
-    public static function make($key = null, $secret = null, $partner = null, $endpoint = null, $currency = null): AmazonGiftCode
+    public static function make($key = null, $secret = null, $partner = null, $endpoint = null, $currency = null,$program = null): AmazonGiftCode
     {
-        return new static($key, $secret, $partner, $endpoint, $currency);
+        return new static($key, $secret, $partner, $endpoint, $currency, $program);
     }
 
 }
