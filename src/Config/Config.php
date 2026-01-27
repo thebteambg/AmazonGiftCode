@@ -177,8 +177,11 @@ class Config implements ConfigInterface
      */
     public function setProgram($program): ConfigInterface
     {
-        $this->_program = $program;
-
+        $this->_program = $program;        
+		if(is_null($program))
+		{
+			$this->_program = '';
+		}
         return $this;
     }
 }
