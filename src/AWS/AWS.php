@@ -32,6 +32,7 @@ class AWS
     public const CREATE_GIFT_CARD_SERVICE = 'CreateGiftCard';
     public const CANCEL_GIFT_CARD_SERVICE = 'CancelGiftCard';
     public const GET_AVAILABLE_FUNDS_SERVICE = 'GetAvailableFunds';
+    public const GET_GIFT_CARD_SERVICE = 'GetGiftCard';
 
     private $_config;
 
@@ -53,9 +54,16 @@ class AWS
      *
      * @throws AmazonErrors
      */
-    public function getCode($amount, $creationId = null): CreateResponse
+    public function getCode($amount, $creationId = null, $createCard = false): CreateResponse
     {
-        $serviceOperation = self::CREATE_GIFT_CARD_SERVICE;
+        if($createCard)
+        {
+            $serviceOperation = self::CREATE_GIFT_CARD_SERVICE;
+        }
+        else
+        {
+            $serviceOperation = self::GET_GIFT_CARD_SERVICE;
+        }
         $payload = $this->getGiftCardPayload($amount, $creationId);
         $canonicalRequest = $this->getCanonicalRequest($serviceOperation, $payload);
         $dateTimeString = $this->getTimestamp();
