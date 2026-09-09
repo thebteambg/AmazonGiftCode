@@ -35,9 +35,13 @@ class AmazonGiftCode
      */
     public function buyGiftCard(Float $value, string $creationRequestId = null): Response\CreateResponse
     {
-        return (new AWS($this->_config))->getCode($value, $creationRequestId);
+        return (new AWS($this->_config))->getCode($value, $creationRequestId, true);
     }
 
+    public function getGiftCard(Float $value, string $creationRequestId = null): Response\CreateResponse
+    {
+        return (new AWS($this->_config))->getCode($value, $creationRequestId, false);
+    }
 
     /**
      * @param string $creationRequestId
